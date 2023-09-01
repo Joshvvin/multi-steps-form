@@ -25,7 +25,9 @@
         <div class="sidebar-contents">
           <div class="sidebar-elements sidebar-first">
             <div class="sidebar-index first-index">
-              1
+              <div class="sidebar-index-text">
+                1
+              </div>
             </div>
             <div class="sidebar-steps">
               <div class="sidebar-steps-one">
@@ -38,7 +40,9 @@
           </div>
           <div class="sidebar-elements sidebar-second">
             <div class="sidebar-index second-index">
-              2
+              <div class="sidebar-index-text">
+                2
+              </div>
             </div>
             <div class="sidebar-steps">
               <div class="sidebar-steps-one">
@@ -51,7 +55,9 @@
           </div>       
           <div class="sidebar-elements sidebar-third">
             <div class="sidebar-index third-index">
-              3
+              <div class="sidebar-index-text">
+                3
+              </div>
             </div>
             <div class="sidebar-steps">
               <div class="sidebar-steps-one">
@@ -64,7 +70,9 @@
           </div>
           <div class="sidebar-elements sidebar-fourth">
             <div class="sidebar-index fourth-index">
-              4
+              <div class="sidebar-index-text">
+                4
+              </div>
             </div>
             <div class="sidebar-steps">
               <div class="sidebar-steps-one">
@@ -97,37 +105,50 @@
                 Please provide your name, email address, and phone number.
               </div>
             </div>
-            <div class="content-contents">
-              <div class="content-contents-first">
-                Name
-              </div>
-              <div class="content-contents-second">
-                <input class="inputs" id="name" type="text" placeholder="e.g. Stephen King">
-              </div>
-            </div>
-            <div class="content-contents">
-              <div class="content-contents-first">
-                Email Address
-              </div>
-              <div class="content-contents-second">
-                <input class="inputs" id="email" type="text" placeholder="e.g. stephenking@lorem.com">
-              </div>
-            </div>
-            <div class="content-contents">
-              <div class="content-contents-first">
-                Phone Number
-              </div>
-              <div class="content-contents-second">
-                <input class="inputs" id="email" type="text" placeholder="e.g. +1 234 567 890">
-              </div>
-            </div>
-            <div class="content-buttons next-step-first-container">
-              <div class="content-buttons-second next-step-first">
-                <div class="content-buttons-second-text">
-                  Next Step
+            <form class="personal_details">
+              <div class="content-contents">
+                <div class="content-contents-first">
+                  <div class="content-contents-first-first">
+                    Name
+                  </div>
+                  <div class="content-contents-first-second" id="name_message">
+                    This field is required
+                  </div>
+                </div>
+                <div class="content-contents-second">
+                  <input class="inputs" id="name" type="text" placeholder="e.g. Stephen King">
                 </div>
               </div>
-            </div>
+              <div class="content-contents">
+                <div class="content-contents-first">
+                  <div class="content-contents-first-first">
+                    Email Address
+                  </div>
+                  <div class="content-contents-first-second" id="email_message">
+                    This field is required
+                  </div>                 
+                </div>
+                <div class="content-contents-second">
+                  <input class="inputs" id="email" type="text" placeholder="e.g. stephenking@lorem.com">
+                </div>
+              </div>
+              <div class="content-contents">
+                <div class="content-contents-first">
+                  <div class="content-contents-first-first">
+                    Phone Number
+                  </div>
+                  <div class="content-contents-first-second" id="phone_message">
+                    This field is required
+                  </div>
+                </div>
+                <div class="content-contents-second">
+                  <input class="inputs" id="phone_number" type="text" placeholder="e.g. +1 234 567 890">
+                </div>
+              </div>
+              <div class="content-buttons next-step-first-container">
+                <input type="submit" value="Next step" class="content-buttons-second next-step-first">
+              </div>
+            </form>
              
           </div>
           <div class="content-second content-steps">
@@ -145,34 +166,28 @@
                   <div class="options-img">
                     <img src="./assets/images/icon-arcade.svg" alt="arcade">
                   </div>
-                  <div class="options-header">
-                    Arcade
-                  </div>
-                  <div class="options-rate">
-                    $9/mo
-                  </div>
+                  <div class="options-header">Arcade</div>
+                  <div class="options-month-rate">$9/mo</div>
+                  <div class="options-year-rate">$90/yr</div>
+                  <div class="options-year-offer">2 months free</div>
                 </div>
                 <div class="content-second-contents-options-elements">
                   <div class="options-img">
                     <img src="./assets/images/icon-advanced.svg" alt="advanced">
                   </div>
-                  <div class="options-header">
-                    Advanced
-                  </div>
-                  <div class="options-rate">
-                    $12/mo
-                  </div>
+                  <div class="options-header">Advanced</div>
+                  <div class="options-month-rate">$12/mo</div>
+                  <div class="options-year-rate">$120/yr</div>
+                  <div class="options-year-offer">2 months free</div>
                 </div>
                 <div class="content-second-contents-options-elements">
                   <div class="options-img">
                     <img src="./assets/images/icon-pro.svg" alt="pro">
                   </div>
-                  <div class="options-header">
-                    Pro
-                  </div>
-                  <div class="options-rate">
-                    $15/mo 
-                  </div> 
+                  <div class="options-header">Pro</div>
+                  <div class="options-month-rate">$15/mo</div> 
+                  <div class="options-year-rate">$150/yr</div>
+                  <div class="options-year-offer">2 months free</div>
                 </div>                 
               </div>
               <div class="content-second-contents-time">
@@ -180,11 +195,19 @@
                   Monthly
                 </div>
                 <div class="toggle">
-
+                  <label class="switch">
+                    <input type="checkbox" id="plan-time">
+                    <span class="slider round"></span>
+                  </label>
                 </div>
                 <div class="yearly">
                   Yearly
                 </div>
+              </div>              
+            </div>
+            <div class="plan_message_container">
+              <div class="plan_message">
+                Select a plan to continue
               </div>
             </div>
             <div class="content-buttons">
@@ -210,7 +233,7 @@
             <div class="content-contents third-contents">
               <div class="content-contents-container">
                 <div class="content-contents-first-check">
-
+                  <input type="checkbox" class="addons-checkbox" id="online-service">
                 </div>
                 <div class="content-contents-first-text">
                   <div class="content-contents-first-text-first">
@@ -222,7 +245,12 @@
                 </div>
                 <div class="content-contents-first-price">
                   <div class="price-container">
-                    +$1/mo
+                    <div class="price-monthly">
+                      +$1/mo
+                    </div>
+                    <div class="price-yearly">
+                      +$10/yr
+                    </div>
                   </div>
                 </div>
               </div>
@@ -230,7 +258,7 @@
             <div class="content-contents third-contents">
               <div class="content-contents-container">
                 <div class="content-contents-first-check">
-
+                  <input type="checkbox" class="addons-checkbox" id="larger-storage">
                 </div>
                 <div class="content-contents-first-text">
                   <div class="content-contents-first-text-first">
@@ -242,30 +270,38 @@
                 </div>
                 <div class="content-contents-first-price">
                   <div class="price-container">
-                    +$2/mo
+                    <div class="price-monthly">
+                      +$2/mo
+                    </div>
+                    <div class="price-yearly">
+                      +$20/yr
+                    </div>
                   </div>
                 </div>
-              </div>               
-    
-
+              </div>     
             </div>
             
             <div class="content-contents third-contents">
               <div class="content-contents-container">
                 <div class="content-contents-first-check">
-
+                  <input type="checkbox" class="addons-checkbox" id="customizable-profile">
                 </div>
                 <div class="content-contents-first-text">
                   <div class="content-contents-first-text-first">
-                    Online service                      
+                    Customizable Profile                    
                   </div>
                   <div class="content-contents-first-text-second">
-                    Access to multiplayer games 
+                    Custom theme on your profile
                   </div>
                 </div>
                 <div class="content-contents-first-price">
                   <div class="price-container">
-                    +$1/mo
+                    <div class="price-monthly">
+                      +$2/mo
+                    </div>
+                    <div class="price-yearly">
+                      +$20/yr
+                    </div>
                   </div>
                 </div>
               </div>
@@ -280,12 +316,6 @@
                 </div>
               </div>
             </div>
-              
-            
-            <!-- Larger storage 
-            Extra 1TB of cloud save +$2/mo 
-            Customizable Profile 
-            Custom theme on your profile +$2/mo -->
           </div>
           <div class="content-fourth content-steps">
             <div class = "content-headers">
