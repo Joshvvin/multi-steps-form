@@ -30,6 +30,7 @@ let plan = {
     plan_name: '',
     plan_time: '',
     plan_rate: '',
+    plan_total_rate: 0,
     plan_addons: []
 }
 function displaythird(){
@@ -103,7 +104,86 @@ function displaythird(){
     }
 }
 second_button.addEventListener('click', displaythird);
-function displayfourth(){
+function displayfourth(event){
+    // console.log(e.target.parentElement.parentElement.parentElement);
+    const addon_headers = event.target.parentElement.parentElement.parentElement.querySelectorAll('.content-contents-first-text-first');
+    const addon_month_rates = event.target.parentElement.parentElement.parentElement.querySelectorAll('.price-monthly');
+    const addon_year_rates = event.target.parentElement.parentElement.parentElement.querySelectorAll('.price-yearly');
+    // console.log(addon_headers);
+    // console.log(addon_month_rates);
+    // console.log(addon_year_rates);
+    for(let item = 0; item < addon_headers.length; item++){
+        // console.log(addon_headers[item]);
+        // console.log(addon_month_rates[item]);
+        // console.log(addon_year_rates[item]);
+        const element = addon_headers[item].parentElement.previousElementSibling.querySelector('.addons-checkbox');
+        // console.log(element.checked);
+        if(element.checked){
+            const addon_detail = {
+                addon_name: addon_headers[item].textContent,
+                addon_rate: plan.plan_time == 'Monthly' ? addon_month_rates[item].textContent : addon_year_rates[item].textContent
+            }
+            plan.plan_addons.push(addon_detail);
+        }
+    }
+    // console.log(e.target.parentElement.querySelector('.content-contents-first-text-first'));
+    // const addon_detail = {
+    //     addon_name: addon_header,
+    //     addon_rate: plan.plan_time == 'Monthly' ? addon_month_rate : addon_year_rate
+    // }
+    // plan.plan_addons.push(addon_detail);
+    // console.log(plan);
+    const final_plan_header = document.querySelector('.final-plan-header');
+    const final_plan_time = document.querySelector('.final-plan-time');
+    const final_plan_rate = document.querySelector('.final-plan-rate')
+    const total_monthly = document.querySelector('.total-monthly');
+    const total_yearly = document.querySelector('.total-yearly');
+    const total_price = document.querySelector('.total-price');
+    // console.log(total_price);
+    final_plan_header.textContent = plan.plan_name;
+    final_plan_time.textContent = '(' + plan.plan_time +')';
+    final_plan_rate.textContent = plan.plan_rate;
+    // console.log(plan.plan_rate.slice(1,-3))
+    plan.plan_total_rate = plan.plan_rate.slice(1,-3);
+    if(plan.plan_time == 'Monthly'){
+        total_monthly.style.display = 'flex';
+        total_yearly.style.display = 'none';
+    }
+    else{
+        total_monthly.style.display = 'none';
+        total_yearly.style.display = 'flex';
+    }
+    // total_price.textContent = plan.plan_rate;
+    const final_addons = document.querySelector('.final-plan-addons-container');
+    // for(const child of final_addons.children){
+    //     console.log('inside final_addons.children loop');
+    //     child.remove();
+    //     console.log(final_addons);
+    // }
+    for(const addon in plan.plan_addons){
+        const plan_addon_container = document.createElement('div');
+        plan_addon_container.setAttribute('class', 'plan_addon_container');
+        plan_addon_container.setAttribute('id', `${addon}`);
+        const plan_addon_name = document.createElement('div');
+        plan_addon_name.setAttribute('class', 'plan_addon_name');
+        plan_addon_name.textContent = plan.plan_addons[addon].addon_name;
+        const plan_addon_rate_container = document.createElement('div');
+        plan_addon_rate_container.setAttribute('class', 'plan_addon_rate_container');
+        const plan_addon_rate = document.createElement('div');
+        plan_addon_rate.setAttribute('class', 'plan_addon_rate');
+        plan_addon_rate.textContent = plan.plan_addons[addon].addon_rate;
+        plan_addon_rate_container.append(plan_addon_rate);
+        plan_addon_container.append(plan_addon_name);
+        plan_addon_container.append(plan_addon_rate_container);
+        final_addons.append(plan_addon_container);
+        // console.log(addon.addon_rate.slice(2,-3));
+        plan.plan_total_rate = parseInt(plan.plan_total_rate) + parseInt(plan.plan_addons[addon].addon_rate.slice(2,-3));
+    }
+    // console.log(plan.plan_total_rate);
+    // console.log(plan.plan_addons);
+    // console.log(final_addons);
+
+    total_price.textContent = `+$${plan.plan_total_rate}${plan.plan_rate.slice(plan.plan_rate.length-3)}`;
     third_step.style.display = 'none';
     fourth_step.style.display = 'flex';
     third_index.style.backgroundColor = 'transparent';
@@ -124,6 +204,13 @@ second_back.addEventListener('click', gobacktofirst);
 
 function gobacktosecond(){
     third_step.style.display = 'none';
+    fourth_step.style.display = 'none';
+    plan.plan_addons = [];
+    const final_addons = document.querySelector('.final-plan-addons-container');
+    while(final_addons.firstChild){
+        final_addons.firstChild.remove();
+    }
+    // console.log(final_addons);
     second_step.style.display = 'flex';
     third_index.style.backgroundColor = 'transparent';
     third_index.style.color = 'white';
@@ -133,6 +220,14 @@ function gobacktosecond(){
 third_back.addEventListener('click', gobacktosecond);
 
 function gobacktothird(){
+    const final_addons = document.getElementsByClassName('final-plan-addons-container')[0];
+    // console.log(final_addons);
+    // console.log(final_addons.children);
+    // const final_addons_children = final_addons.children;
+    while(final_addons.firstChild){
+        final_addons.firstChild.remove();
+    }
+    plan.plan_addons=[]
     fourth_step.style.display = 'none';
     third_step.style.display = 'flex';
     fourth_index.style.backgroundColor = 'transparent';
@@ -154,7 +249,7 @@ const plans = document.querySelector('.content-second-contents-options-elements'
 const form = document.querySelector('.personal_details');
 function validateDetails(event){
     event.preventDefault();
-    console.log('clicked');
+    // console.log('clicked');
     // alert('form is going to be validated');
     const name = document.getElementById('name');
     const email = document.getElementById('email');
@@ -249,10 +344,8 @@ function displayplans(e){
         for(const year_offer of plans_year_offer){
             year_offer.style.display = 'flex';
         }
-        // plans_year_rate.style.display = 'flex';
-        // plans_year_offer.style.display = 'flex';
-        yearly.style.fontWeight = 'bold';
-        monthly.style.fontWeight = '100';
+        monthly.style.color = 'hsl(231, 11%, 63%)';
+        yearly.style.color = 'hsl(213, 96%, 18%)';
     }
     else{
         // console.log('not checked');
@@ -268,8 +361,8 @@ function displayplans(e){
         // plans_month_rate.style.display = 'flex';
         // plans_year_rate.style.display = 'none';
         // plans_year_offer.style.display = 'none';
-        yearly.style.fontWeight = '100';
-        monthly.style.fontWeight = 'bold';
+        yearly.style.color = 'hsl(231, 11%, 63%)';
+        monthly.style.color = 'hsl(213, 96%, 18%)';
     }
 }
 plan_time.addEventListener('click', displayplans);
@@ -286,9 +379,12 @@ function highlightaddon(e){
     else{
         element.style.backgroundColor = 'white';
         element.style.borderColor = 'hsl(229, 24%, 87%)';
+
     }
 }
 // console.log(checkbox);
 for(const check of checkbox){
     check.addEventListener('click', highlightaddon);
 }
+const final_plan_option = document.querySelector('.final-plan-option');
+final_plan_option.addEventListener('click', gobacktosecond);

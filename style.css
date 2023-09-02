@@ -8,7 +8,7 @@ body{
     height: 98vh;
     justify-content: center;
     align-items: center;
-    font-family: ubuntu-regular;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 16px;
 }
 .body-content-container{
@@ -40,7 +40,7 @@ body{
     background-size: 100% 100%;
 }
 .sidebar div{
-    /* border: 1px solid black; */
+    /* border: 1px solid black;     */
 }
 .sidebar-contents{
     margin-top: 20px;
@@ -63,8 +63,8 @@ body{
     text-transform: uppercase;
 }
 .sidebar-index{
-    flex-basis: 12%;
-    height: 40%;
+    flex-basis: 14%;
+    height: 45%;
     border: 1px solid white;
     text-align: center;
     display: flex;
@@ -77,6 +77,19 @@ body{
 .sidebar-index-text{
     flex-basis: 50%;
     height: 50%;
+}
+.sidebar-steps{
+    /* border: 1px solid black; */
+    flex-basis: 60%;
+    height: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: space-between;
+}
+.sidebar-steps div{
+    flex-basis: 100%;
+    height: 40%;
+    /* border: 1px solid black; */
 }
 .first-index{
     background-color: #BEE1FC;
@@ -130,12 +143,15 @@ body{
 .content-headers-first{
     flex-basis: 100%;
     height: 50%;
-    font-size: 35px;
-    font-weight: bold;
+    font-size: 32px;
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
 }
 .content-headers-second{
     flex-basis: 100%;
     height: 30%;
+    color: hsl(231, 11%, 63%);
+    font-weight: 500;
     font-size: 18px;
 }
 .personal_details{
@@ -162,21 +178,22 @@ body{
     /* border: 1px solid black; */
 }
 .content-contents-first{
-    font-size: 20px;
+    /* font-size: px; */
     flex-basis: 100%;
     height: 25%;
     display: flex;
     justify-content: space-between;
 }
 .content-contents-first-first{
-    font-weight: bold;
+    font-weight: 700;
+    color: hsl(213, 96%, 18%);
     flex-basis: 30%;
     height: 100%;
 }
 .content-contents-first-second{
-    flex-basis: 30%;
+    /* flex-basis: 30%; */
     height: 100%;
-    text-align: end;
+    /* text-align: center; */
     color: red;
     display: none;
 }
@@ -220,15 +237,16 @@ body{
     flex-basis: 20%;
     height: 20%;
     font-size: 20px;
-    color: rgb(112, 111, 111);
+    color: hsl(231, 11%, 63%);
+    font-weight: 700;
 }
 .content-buttons-second{
     flex-basis: 20%;
     height: 35%;
     background-color: #03295A;
-    color: white;
+    color: hsl(229, 24%, 87%);
     border-radius: 10px;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 18px;
     display: flex;
     justify-content: center;
@@ -304,7 +322,8 @@ body{
     size: 100% 100%;
 }
 .options-header{
-    font-weight: bold;
+    font-weight: 700;
+    color: hsl(213, 96%, 18%);
     font-size: 20px;
     flex-basis: 80%;
     height: 15%;
@@ -313,18 +332,22 @@ body{
     flex-basis: 80%;
     font-size: 18px;
     height: 12%;
+    color: hsl(231, 11%, 63%);
     display: flex;
 }
 .options-year-rate{
     flex-basis: 80%;
     font-size: 18px;
     height: 12%;
+    color: hsl(231, 11%, 63%);
     display: none;
 }
 .options-year-offer{
     flex-basis: 80%;
     font-size: 16px;
     height: 12%;
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
     display: none;
 }
 .content-second-contents-time{
@@ -345,7 +368,7 @@ body{
     /* border: 1px solid black; */
 }
 .plan_message{
-    flex-basis: 40%;
+    /* flex-basis: 45%; */
     height: 70%;
     text-align: center;
     font-size: 25px;
@@ -361,9 +384,11 @@ body{
     height: 42%;
     font-size: 20px;
     text-align: center;
+    color: hsl(231, 11%, 63%);
+    font-weight: 700;
 }
 .monthly{
-    font-weight: bold;
+    color: hsl(213, 96%, 18%);
 }
 .toggle{
     flex-basis: 7%;
@@ -478,13 +503,15 @@ body{
 .content-contents-first-text-first{
     flex-basis: 90%;
     height: 60%;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 19px;
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
 }
 .content-contents-first-text-second{
     flex-basis: 90%;
     height: 35%;
-    font-size: 16px;
+    color: hsl(231, 11%, 63%);
+    font-size: 17px;
 }
 .content-contents-first-price{
     flex-basis: 20%;
@@ -494,21 +521,23 @@ body{
     align-items: center;
 }
 .price-container{
-    flex-basis: 60%;
+    /* flex-basis: 60%; */
     height: 30%;
     display: flex;
+    /* border: 1px solid black; */
 }
 .price-monthly{
     flex-basis: 100%;
     height: 100%;
-    font-size: 20px;
+    color: hsl(243, 100%, 62%);
+    /* font-size: 20px; */
     text-align: center;
     display: flex;
 }
 .price-yearly{
     flex-basis: 100%;
     height: 100%;
-    font-size: 20px;
+    /* font-size: 20px; */
     text-align: center;
     display: none;
 }
@@ -528,10 +557,145 @@ body{
     flex-basis: 100%;
     height: 60%;
     border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.final-plan-container{
+    flex-basis: 90%;
+    height: 40%;
+    display: flex;
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
+    border-bottom: 1px solid hsl(229, 24%, 87%);
+    /* border: 1px solid black; */
+    /* align-items: center; */
+    justify-content: space-between;
+}
+.final-plan-container div{
+    /* border: 1px solid black; */
+}
+.final-plan{
+    flex-basis: 50%;
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.final-plan div{
+    flex-basis: 100%;
+    height: 40%;
+    /* border: 1px solid black; */
+}
+.final-plan-header-container{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* border: 1px solid black; */
+}
+.final-plan-header-container div{
+    /* border: 1px solid black; */
+    flex-basis: 30%;
+    height: 90%;
+    font-size: 19px;
+    /* text-align: center; */
+}
+.final-plan-option{
+    font-size: 16px;
+    text-decoration: underline;
+    color: hsl(231, 11%, 63%);
+    font-weight: 500;
+}
+.final-plan-option:hover{
+    cursor: pointer;
+}
+.final-plan-rate-container{
+    flex-basis: 35%;
+    height: 90%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.final-plan-rate{
+    /* flex-basis: 28%; */
+    height: 50%;
+    font-size: 18px;
+}
+.final-plan-addons-container{
+    flex-basis: 90%;
+    height: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.plan_addon_container{
+    flex-basis: 100%;
+    height: 30%;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid black; */
+    display: flex;
+}
+.plan_addon_container div{
+    /* border: 1px solid black; */
+}
+.plan_addon_name{
+    flex-basis: 30%;
+    height: 100%;
+    color: hsl(231, 11%, 63%);
+}
+.plan_addon_rate_container{
+    flex-basis: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    color: hsl(213, 96%, 18%);
+    font-weight: 500;
 }
 .content-fourth-contents-total{
     flex-basis: 90%;
     height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+.content-fourth-contents-total div{
+    /* border: 1px solid black; */
+}
+
+.total{
+    flex-basis: 50%;
+    height: 90%;
+    font-size: 17px;
+    display: flex;
+    color: hsl(231, 11%, 63%);
+    /* font-weight: 700; */
+    /* border: 1px solid black; */
+    /* text-align: end; */
+}   
+.total-price-container{
+    flex-basis: 30%;
+    height: 90%;
+    font-size: 25px;
+    color:hsl(243, 100%, 62%);
+    font-weight: 700;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.total-price{
+    flex-basis: 60%;
+    height: 90%;
+    text-align: end;
+}
+.next-step-fourth{
+    background-color: hsl(243, 100%, 62%);
+    color: hsl(229, 24%, 87%);
 }
 .content-fifth{
     /* border: 1px solid black; */
@@ -560,11 +724,14 @@ body{
 .content-fifth-header{
     height: 15%;
     font-size: 40px;
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
     text-align: center;
-    font-weight: bold;
 }
 .content-fifth-text{
     height: 30%;
     text-align: center;
     font-size: 22px;
+    color: hsl(231, 11%, 63%);
+    font-weight: 500;
 }
