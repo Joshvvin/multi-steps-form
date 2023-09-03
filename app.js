@@ -1,4 +1,3 @@
-
 const second_step = document.querySelector('.content-second');
 const first_step = document.querySelector('.content-first');
 const third_step = document.querySelector('.content-third');
@@ -16,16 +15,6 @@ const second_button = document.querySelector('.next-step-second');
 const third_button = document.querySelector('.next-step-third');
 const fourth_button = document.querySelector('.next-step-fourth');
 fifth_step.style.display = 'none';
-// function displaysecond(){
-//     // console.log(first_step);
-//     first_step.style.display = 'none';
-//     second_step.style.display = 'flex';
-//     first_index.style.backgroundColor = 'transparent';
-//     first_index.style.color = 'white';
-//     second_index.style.backgroundColor = '#BEE1FC';
-//     second_index.style.color = 'black';
-// }
-// first_button.addEventListener('click', displaysecond);
 let plan = {
     plan_name: '',
     plan_time: '',
@@ -36,13 +25,13 @@ let plan = {
 function displaythird(){
     const plan_cards = document.querySelector('.content-second-contents-options');
     let f= false;
-    // console.log(plan);
+    // console.log(plan_cards);
     for(const plan_card of plan_cards.children){
         // console.log(plan_card.style.backgroundColor);
         if(plan_card.style.backgroundColor.split(' ').join('') == 'rgb(238,245,255)'){
             f = true;
-            // console.log(plan_card);
-            for(const plan_detail of plan_card.children){
+            // console.log(plan_card.lastElementChild);
+            for(const plan_detail of plan_card.lastElementChild.children){
                 // console.log(plan_detail);
                 if(plan_detail.getAttribute('class') == 'options-header'){
                     // console.log(plan_detail.textContent);
@@ -68,7 +57,7 @@ function displaythird(){
     }  
     const plan_message = document.querySelector('.plan_message');
     if(f){
-        console.log(plan);
+        // console.log(plan);
         // plan_message.style.display = 'none';
         second_step.style.display = 'none';
         third_step.style.display = 'flex';
@@ -109,13 +98,7 @@ function displayfourth(event){
     const addon_headers = event.target.parentElement.parentElement.parentElement.querySelectorAll('.content-contents-first-text-first');
     const addon_month_rates = event.target.parentElement.parentElement.parentElement.querySelectorAll('.price-monthly');
     const addon_year_rates = event.target.parentElement.parentElement.parentElement.querySelectorAll('.price-yearly');
-    // console.log(addon_headers);
-    // console.log(addon_month_rates);
-    // console.log(addon_year_rates);
     for(let item = 0; item < addon_headers.length; item++){
-        // console.log(addon_headers[item]);
-        // console.log(addon_month_rates[item]);
-        // console.log(addon_year_rates[item]);
         const element = addon_headers[item].parentElement.previousElementSibling.querySelector('.addons-checkbox');
         // console.log(element.checked);
         if(element.checked){
@@ -126,13 +109,6 @@ function displayfourth(event){
             plan.plan_addons.push(addon_detail);
         }
     }
-    // console.log(e.target.parentElement.querySelector('.content-contents-first-text-first'));
-    // const addon_detail = {
-    //     addon_name: addon_header,
-    //     addon_rate: plan.plan_time == 'Monthly' ? addon_month_rate : addon_year_rate
-    // }
-    // plan.plan_addons.push(addon_detail);
-    // console.log(plan);
     const final_plan_header = document.querySelector('.final-plan-header');
     const final_plan_time = document.querySelector('.final-plan-time');
     const final_plan_rate = document.querySelector('.final-plan-rate')
@@ -213,7 +189,9 @@ function gobacktosecond(){
     // console.log(final_addons);
     second_step.style.display = 'flex';
     third_index.style.backgroundColor = 'transparent';
+    fourth_index.style.backgroundColor = 'transparent';
     third_index.style.color = 'white';
+    fourth_index.style.color = 'white';
     second_index.style.backgroundColor = '#BEE1FC';
     second_index.style.color = 'black';
 }
@@ -251,6 +229,7 @@ function validateDetails(event){
     event.preventDefault();
     // console.log('clicked');
     // alert('form is going to be validated');
+    let f = true;
     const name = document.getElementById('name');
     const email = document.getElementById('email');
     const phone = document.getElementById('phone_number');
@@ -270,8 +249,49 @@ function validateDetails(event){
             phone_message.style.display = 'flex';
             phone.style.borderColor = 'red';
         }
-    }    
+        f=false;
+    }
     else{
+        // console.log(email.value.slice(-4));
+        if(name.value.includes('!') || name.value.includes(',') || name.value.includes('/') || name.value.includes('?') || name.value.includes('-')){
+            name_message.style.display = 'flex';
+            name.style.borderColor = 'red';
+            name_message.textContent = 'Enter a valid Name';
+            f=false;
+        }
+        if(!email.value.includes('@') || email.value.slice(-4) != '.com'){
+            email_message.style.display = 'flex';
+            email.style.borderColor = 'red';
+            email_message.textContent = 'Enter a valid Email Address';
+            f=false;
+        }
+        if(phone.value.length < 10 || phone.value[0] != '+'){
+            phone_message.style.display = 'flex';
+            phone.style.borderColor = 'red';
+            phone_message.textContent = 'Enter a valid Phone Number';
+            f=false;
+        }
+        else{
+            const number = phone.value.slice(1).split(' ').join('');
+            // console.log(number);
+            for(const digit of number){
+                if(!(parseInt(digit) >= 0 && parseInt(digit) < 10) ){
+                    phone_message.style.display = 'flex';
+                    phone.style.borderColor = 'red';
+                    phone_message.textContent = 'Enter a valid Phone Number';
+                    f=false;
+                    break;
+                }
+            }
+        }
+    }
+    if(f){
+        name_message.style.display = 'none';
+        email_message.style.display = 'none';
+        phone_message.style.display = 'none';
+        name.style.borderColor = 'rgb(221, 219, 219)';
+        email.style.borderColor = 'rgb(221, 219, 219)';
+        phone.style.borderColor = 'rgb(221, 219, 219)';
         first_step.style.display = 'none';
         second_step.style.display = 'flex';
         first_index.style.backgroundColor = 'transparent';
@@ -281,11 +301,12 @@ function validateDetails(event){
     }
 }
 form.addEventListener('submit', validateDetails);
-const plan_cards = document.querySelector('.content-second-contents-options');
-function highlightplancard(e){
-    // console.log(e.target);
-    // console.log(e.target.parentElement, plan_cards);
-    const element = e.target.parentElement;
+const plan_cards = document.querySelectorAll('.content-second-contents-options-elements');
+function highlightplancard(event){
+    let element = event.target;
+    while(element.getAttribute('class') != 'content-second-contents-options-elements'){
+        element = element.parentElement;
+    }
     const parent = element.parentElement;
     for(const item of parent.children){
         // console.log(item);
@@ -301,25 +322,11 @@ function highlightplancard(e){
         }
     }
 }
-plan_cards.addEventListener('click', highlightplancard);
-
-// function hoverhighlight(e){
-//     const element = e.target.parentElement;
-//     const parent = element.parentElement;
-//     for(const item of parent.children){
-//         // console.log(item);
-//         if(item == element){
-//             // console.log(item);
-//             item.style.backgroundColor = 'rgb(238,245,255)';
-//             item.style.borderColor = 'hsl(243, 100%, 62%)';
-//         }
-//         else{
-//             item.style.backgroundColor = 'white';
-//             item.style.borderColor = 'rgb(221, 219, 219)';
-//         }
-//     }
-// }
-// plan_cards.addEventListener('mouse', hoverhighlight);
+// console.log(plan_cards);
+for(const card of plan_cards){
+    // console.log(card);
+    card.addEventListener('click', highlightplancard);
+}
 
 const plan_time = document.getElementById('plan-time');
 function displayplans(e){
@@ -329,10 +336,6 @@ function displayplans(e){
     const plans_month_rate = document.querySelectorAll('.options-month-rate');
     const plans_year_rate = document.querySelectorAll('.options-year-rate');
     const plans_year_offer = document.querySelectorAll('.options-year-offer');
-    // console.log(plans_month_rate);
-    // console.log(plans_year_rate);
-    // console.log(plans_year_offer);
-
     if(e.target.checked){
         // console.log('checked');
         for(const month_rate of plans_month_rate){
@@ -358,9 +361,6 @@ function displayplans(e){
         for(const year_offer of plans_year_offer){
             year_offer.style.display = 'none';
         }
-        // plans_month_rate.style.display = 'flex';
-        // plans_year_rate.style.display = 'none';
-        // plans_year_offer.style.display = 'none';
         yearly.style.color = 'hsl(231, 11%, 63%)';
         monthly.style.color = 'hsl(213, 96%, 18%)';
     }
