@@ -14,6 +14,11 @@ const first_button = document.querySelector('.next-step-first');
 const second_button = document.querySelector('.next-step-second');
 const third_button = document.querySelector('.next-step-third');
 const fourth_button = document.querySelector('.next-step-fourth');
+const first_button_container = document.querySelector('.next-step-first-container');
+const second_button_container = document.querySelector('.next-step-second-container');
+const third_button_container = document.querySelector('.next-step-third-container');
+const fourth_button_container = document.querySelector('.next-step-fourth-container');
+
 fifth_step.style.display = 'none';
 let plan = {
     plan_name: '',
@@ -61,6 +66,8 @@ function displaythird(){
         // plan_message.style.display = 'none';
         second_step.style.display = 'none';
         third_step.style.display = 'flex';
+        third_button_container.style.display = 'flex';
+        second_button_container.style.display = 'none';
         second_index.style.backgroundColor = 'transparent';
         second_index.style.color = 'white';
         third_index.style.backgroundColor = '#BEE1FC';
@@ -159,9 +166,11 @@ function displayfourth(event){
     // console.log(plan.plan_addons);
     // console.log(final_addons);
 
-    total_price.textContent = `+$${plan.plan_total_rate}${plan.plan_rate.slice(plan.plan_rate.length-3)}`;
+    total_price.textContent = `$${plan.plan_total_rate}${plan.plan_rate.slice(plan.plan_rate.length-3)}`;
     third_step.style.display = 'none';
     fourth_step.style.display = 'flex';
+    third_button_container.style.display = 'none';
+    fourth_button_container.style.display = 'flex';
     third_index.style.backgroundColor = 'transparent';
     third_index.style.color = 'white';
     fourth_index.style.backgroundColor = '#BEE1FC';
@@ -171,6 +180,9 @@ third_button.addEventListener('click', displayfourth);
 function gobacktofirst(){
     second_step.style.display = 'none';
     first_step.style.display = 'flex';
+    // first_button.style.display = 'flex';
+    first_button_container.style.display = 'flex';
+    second_button_container.style.display = 'none';
     second_index.style.backgroundColor = 'transparent';
     second_index.style.color = 'white';
     first_index.style.backgroundColor = '#BEE1FC';
@@ -188,6 +200,9 @@ function gobacktosecond(){
     }
     // console.log(final_addons);
     second_step.style.display = 'flex';
+    third_button_container.style.display = 'none';
+    second_button_container.style.display = 'flex';
+    fourth_button_container.style.display = 'none';
     third_index.style.backgroundColor = 'transparent';
     fourth_index.style.backgroundColor = 'transparent';
     third_index.style.color = 'white';
@@ -208,6 +223,8 @@ function gobacktothird(){
     plan.plan_addons=[]
     fourth_step.style.display = 'none';
     third_step.style.display = 'flex';
+    third_button_container.style.display = 'flex';
+    fourth_button_container.style.display = 'none';
     fourth_index.style.backgroundColor = 'transparent';
     fourth_index.style.color = 'white';
     third_index.style.backgroundColor = '#BEE1FC';
@@ -218,13 +235,14 @@ fourth_back.addEventListener('click', gobacktothird);
 function displayfifth(){
     fifth_step.style.display = 'flex';
     fourth_step.style.display = 'none';
+    fourth_button_container.style.display = 'none';
 }
 fourth_button.addEventListener('click', displayfifth);
  
 const plans = document.querySelector('.content-second-contents-options-elements');
 // plans.addEventListener('click',  )
 // second_button.addEventListener('click', displaythird);
-const form = document.querySelector('.personal_details');
+const form = document.querySelector('.next-step-first');
 function validateDetails(event){
     event.preventDefault();
     // console.log('clicked');
@@ -293,6 +311,8 @@ function validateDetails(event){
         email.style.borderColor = 'rgb(221, 219, 219)';
         phone.style.borderColor = 'rgb(221, 219, 219)';
         first_step.style.display = 'none';
+        first_button_container.style.display = 'none';
+        second_button_container.style.display = 'flex';
         second_step.style.display = 'flex';
         first_index.style.backgroundColor = 'transparent';
         first_index.style.color = 'white';
@@ -300,7 +320,7 @@ function validateDetails(event){
         second_index.style.color = 'black';
     }
 }
-form.addEventListener('submit', validateDetails);
+form.addEventListener('click', validateDetails);
 const plan_cards = document.querySelectorAll('.content-second-contents-options-elements');
 function highlightplancard(event){
     let element = event.target;
