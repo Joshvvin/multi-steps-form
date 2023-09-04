@@ -292,14 +292,21 @@ function validateDetails(event){
         else{
             const number = phone.value.slice(1).split(' ').join('');
             // console.log(number);
-            for(const digit of number){
-                if(!(parseInt(digit) >= 0 && parseInt(digit) < 10) ){
-                    phone_message.style.display = 'flex';
-                    phone.style.borderColor = 'red';
-                    phone_message.textContent = 'Enter a valid Phone Number';
-                    f=false;
-                    break;
+            if(number.length > 12){
+                f=false;
+            }
+            else{
+                for(const digit of number){
+                    if(!(parseInt(digit) >= 0 && parseInt(digit) < 10) ){
+                        f=false;
+                        break;
+                    }
                 }
+            }
+            if(!f){
+                phone_message.style.display = 'flex';
+                phone.style.borderColor = 'red';
+                phone_message.textContent = 'Enter a valid Phone Number';
             }
         }
     }

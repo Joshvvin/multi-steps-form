@@ -45,7 +45,7 @@ body{
     background-image: url('./assets/images/bg-sidebar-desktop.svg');
     background-repeat: no-repeat;
     /* object-fit: cover; */
-    background-size: 100% 100%;
+    background-size: cover;
 }
 .sidebar div{
     /* border: 1px solid black;     */
@@ -203,11 +203,11 @@ body{
 .content-contents-first-first{
     font-weight: 700;
     color: hsl(213, 96%, 18%);
-    flex-basis: 30%;
+    flex-basis: 50%;
     height: 100%;
 }
 .content-contents-first-second{
-    /* flex-basis: 30%; */
+    flex-basis: 30%;
     height: 100%;
     /* text-align: center; */
     color: red;
@@ -1052,7 +1052,7 @@ body{
         border-radius: 10px;
         flex-basis: 93%;
         height: 80%;
-        margin-top: -68px;
+        margin-top: -82px;
         /* display: flex; */
         justify-content: center;
         align-items: space-between;
@@ -1204,8 +1204,9 @@ body{
     }
     .toggle{
         flex-basis: 11%;
-        height: 42%;
+        height: 45%;
         display: flex;
+        /* border: 1px solid black; */
     }
     
     .switch {
@@ -1233,7 +1234,7 @@ body{
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #03295A;
+        background-color: hsl(213, 96%, 18%);
         -webkit-transition: .4s;
         transition: .4s;
       }
@@ -1241,10 +1242,10 @@ body{
       .slider:before {
         position: absolute;
         content: "";
-        height: 12px;
-        width: 12px;
+        height: 14px;
+        width: 14px;
         left: 4px;
-        top: 3px;
+        top: 10%;
         background-color: white;
         -webkit-transition: .4s;
         transition: .4s;
@@ -1261,7 +1262,7 @@ body{
       input:checked + .slider:before {
         /* -webkit-transform: translateX(26px);
         -ms-transform: translateX(26px); */
-        transform: translateX(19px);
+        transform: translateX(100%);
       }
       
       /* Rounded sliders */
